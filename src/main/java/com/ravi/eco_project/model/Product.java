@@ -1,6 +1,5 @@
 package com.ravi.eco_project.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -15,26 +14,59 @@ public class Product {
     private String description;
     private String brand;
     private BigDecimal price;
-    private String cat;
+    private String category;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private Date rel_date;
-    private boolean available;
-    private int quantity;
+  //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date releaseDate;
+    private boolean productAvailable;
+    private int stockQuantity;
+
+    private String imageName;
+    private String imageType;
+
+    @Lob
+    private byte[] imageData;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String brand, BigDecimal price, Date rel_date, String cat, boolean available, int quantity) {
+    public Product(int id, String name, String description, String brand, BigDecimal price, String category, Date releaseDate, boolean productAvailable, int stockQuantity, String imageName, String imageType, byte[] imageData) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.brand = brand;
         this.price = price;
-        this.rel_date = rel_date;
-        this.cat = cat;
-        this.available = available;
-        this.quantity = quantity;
+        this.category = category;
+        this.releaseDate = releaseDate;
+        this.productAvailable = productAvailable;
+        this.stockQuantity = stockQuantity;
+        this.imageName = imageName;
+        this.imageType = imageType;
+        this.imageData = imageData;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 
     public int getId() {
@@ -77,35 +109,35 @@ public class Product {
         this.brand = brand;
     }
 
-    public String getCat() {
-        return cat;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCat(String cat) {
-        this.cat = cat;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public Date getRel_date() {
-        return rel_date;
+    public Date getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRel_date(Date rel_date) {
-        this.rel_date = rel_date;
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public boolean isProductAvailable() {
+        return productAvailable;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setProductAvailable(boolean productAvailable) {
+        this.productAvailable = productAvailable;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getStockQuantity() {
+        return stockQuantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 }
